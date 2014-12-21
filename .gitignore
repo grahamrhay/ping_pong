@@ -1,2 +1,5 @@
 *.swp
 .vagrant/
+_rel/
+ebin/
+relx

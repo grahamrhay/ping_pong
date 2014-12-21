@@ -1,0 +1,13 @@
+{application, ping_pong, [
+    {description, ""},
+    {vsn, "0.1.0"},
+    {id, "git"},
+    {modules, []},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {mod, {ping_pong_app, []}},
+    {env, []}
+]}.
