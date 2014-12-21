@@ -3,3 +3,5 @@
 _rel/
 ebin/
 relx
+deps/
+.erlang.mk.packages.v2
