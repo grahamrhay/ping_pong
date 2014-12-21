@@ -12,6 +12,16 @@ var socket = new WebSocket('ws://localhost:8080/connect');
 
 socket.onopen = function() {
     console.log('connected');
+    send('ping');
+};
+
+function send(data) {
+    console.log('Sending data: ' + data);
+    socket.send(data);
+}
+
+socket.onmessage = function(ev) {
+    console.log('Received data: ' + ev.data);
 };
     </script>
 </html>
