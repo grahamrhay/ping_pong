@@ -7,7 +7,8 @@
 init(Req, Opts) ->
     {cowboy_websocket, Req, Opts}.
 
-websocket_handle(_Frame, Req, State) ->
+websocket_handle(Frame, Req, State) ->
+    io:format("Unexpected frame: ~p~n", [Frame]),
     {ok, Req, State}.
 
 websocket_info(_Info, Req, State) ->
