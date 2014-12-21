@@ -7,10 +7,8 @@
 init(Req, Opts) ->
     {cowboy_websocket, Req, Opts}.
 
-websocket_handle({text, Json}, Req, State) ->
-    Map = jiffy:decode(Json, [return_maps]),
-    Count = maps:get(<<"count">>, Map),
-    Reply = #{type => <<"pong">>, count => Count + 1},
+websocket_handle({text, <<"{\"type\":\"ping\",\"count\":", Count:1/binary, "}">>}, Req, State) ->
+    Reply = #{type => <<"pong">>, count => list_to_integer(binary_to_list(Count)) + 1},
     {reply, {text, jiffy:encode(Reply)}, Req, State};
 
 websocket_handle(Frame, Req, State) ->
