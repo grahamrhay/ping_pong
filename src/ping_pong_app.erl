@@ -5,6 +5,11 @@
 -export([stop/1]).
 
 start(_Type, _Args) ->
+    Dispatch = cowboy_router:compile([{'_', [
+        {"/connect", ws_handler, []}
+    ]}]),
+    Port = 8080,
+    cowboy:start_http(my_http_listener, 100, [{port, Port}], [{env, [{dispatch, Dispatch}]}]),
     ping_pong_sup:start_link().
 
 stop(_State) ->
