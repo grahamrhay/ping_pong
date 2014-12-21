@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Ping-Pong</title>
+    </head>
+
+    <body>
+        <h1>Ping-Pong</h1>
+    </body>
+
+    <script>
+var socket = new WebSocket('ws://localhost:8080/connect');
+
+socket.onopen = function() {
+    console.log('connected');
+};
+    </script>
+</html>

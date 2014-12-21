@@ -6,6 +6,7 @@
 
 start(_Type, _Args) ->
     Dispatch = cowboy_router:compile([{'_', [
+        {"/", cowboy_static, {priv_file, ping_pong, "static/index.html"}},
         {"/connect", ws_handler, []}
     ]}]),
     Port = 8080,
