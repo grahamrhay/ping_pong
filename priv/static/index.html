@@ -12,7 +12,8 @@ var socket = new WebSocket('ws://localhost:8080/connect');
 
 socket.onopen = function() {
     console.log('connected');
-    send('ping');
+    var msg = {type: 'ping', count: 1};
+    send(JSON.stringify(msg));
 };
 
 function send(data) {
